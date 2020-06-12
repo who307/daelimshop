@@ -56,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
     background: #fff;
     padding-bottom: 20px;
     border-top : 1px solid #eeeeee;
-    margin-top: 100px;
+    margin-top: 50px;
   }
 `;
 

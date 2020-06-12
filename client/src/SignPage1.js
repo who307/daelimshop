@@ -123,7 +123,7 @@ const Textarea = styled.textarea`
   resize: none;
   scrollbar-color: #0095c8;
   padding: 10px;
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 const Label = styled.label`
