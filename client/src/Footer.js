@@ -13,21 +13,25 @@ const Footer = () => {
         <Footerlist3>개인정보처리방침</Footerlist3>
       </FooterLink>
       <Company>
-        서울특별시 마마구 마마마로 02 (마마동 15-7) 아아마빌라 2층 (우편번호:
-        00000) ㅣ TEL. 02)1234-5678 ㅣ FAX. 02)1234-5678 iksij@ajsndjle.co.kr ㅣ
-        정보관리책임 : 김이박최 ㅣ 사업자등록번호 : 000-00-000000 ㅣ 업체명
-        :꿀디자인 대표이사 김이박최
+        경기도 안양시 동안구 임곡로 29  대림대학교 전산관 5층 (우편번호:13916
+        ) ㅣ TEL. 010)4054-4118 ㅣ FAX. 02)1234-5678 who307@naver.com ㅣ
+        정보관리책임 : 김류문ㅣ 사업자등록번호 : 000-00-000000 ㅣ 업체명
+        :대중장 대표이사 김류문
       </Company>
-      <Question>
-        고객센터 02-852-9632 ㅣ 제휴문의 apdlfwnth@dusfkrgo.com
+      <Copyright>
+        Copyright ⓒ 2020.KimRyuMoon. All right reserved
+        </Copyright>
+        <Question>
+        고객센터 02-852-9632 ㅣ 제휴문의 who307@naver.com
       </Question>
-      <Copyright>Copyright ⓒ 2020.KimRyuMoon. All right reserved</Copyright>
+
     </Container>
   );
 };
 
 const Container = styled.div`
   width: 1200px;
+  height : 200px;
   margin: 0 auto;
   padding: 30px 0;
   line-height: 50px;
@@ -36,6 +40,7 @@ const Logo = styled.h5`
   width: 45px;
   height: 45px;
   color: white;
+  line-height : 45px;
   font-size: 30px;
   background-color: #0095c8;
   border: 1px solid;
@@ -86,13 +91,13 @@ const Question = styled.div`
   height: 44px;
   font-size: 14px;
   text-align: left;
-  margin: 30px 0 0 20px;
+  margin: 10px 0 0 20px;
   float: left;
 `;
 const Copyright = styled.div`
   font-size: 14px;
   text-align: right;
-  margin-top: 30px;
+  margin-top: 40px;
 `;
 
 export default Footer;
