@@ -13,6 +13,25 @@ const Continents = [
 
 ]
 
+const ProductStates = [
+    { key: 1, value: "중고" },
+    { key: 2, value: "새상품" },
+
+]
+
+const Trades = [
+    { key: 1, value: "교환불가" },
+    { key: 2, value: "교환가능" }
+
+]
+
+const Deliveryway = [
+    { key: 1, value: "직거래" },
+    { key: 2, value: "택배착불" },
+    { key: 2, value: "택배선불" }
+
+]
+
 function UploadProductPage(props) {
 
     const [Title, setTitle] = useState("")
@@ -20,6 +39,10 @@ function UploadProductPage(props) {
     const [Price, setPrice] = useState(0)
     const [Continent, setContinent] = useState(1)
     const [Images, setImages] = useState([])
+    const [ProductState, setProductState] = useState([1])
+    const [Trade, setTrade] = useState([1])
+    const [Delivery, setDelivery] = useState([1])
+    const [Area, setArea] = useState([])
 
     const titleChangeHandler = (event) => {
         setTitle(event.currentTarget.value)
@@ -41,12 +64,30 @@ function UploadProductPage(props) {
         setImages(newImages)
     }
 
+    const productstateChangeHandler = (event) => {
+        setProductState(event.currentTarget.value)
+    }
+
+    const tradeChangeHandler = (event) => {
+        setTrade(event.currentTarget.value)
+    }
+
+    const deliveryChangeHandler = (event) => {
+        setDelivery(event.currentTarget.value)
+    }
+
+    const areaChangeHandler = (event) => {
+        setArea(event.currentTarget.value)
+    }
+
+    
+
     const submitHandler = (event) => {
         event.preventDefault();
         
 
 
-        if (!Title || !Description || !Price || !Continent || !Images) {
+        if (!Title || !Description || !Price || !Continent || !Images || !ProductState || !Trade || !Delivery || !Area) {
             return alert(" 모든 정보를 입력해주세요.")
         }
 
@@ -60,7 +101,11 @@ function UploadProductPage(props) {
             description: Description,
             price: Price,
             images: Images,
-            continents: Continent
+            continents: Continent,
+            productState: ProductState,
+            trade : Trade,
+            delivery : Delivery,
+            area : Area
         }
 
         Axios.post('/api/product', body)
@@ -103,6 +148,43 @@ function UploadProductPage(props) {
                     </Select>
                     <br />
                     
+                    <Select>
+                        <Label><h5>*</h5>상품 상태</Label>
+
+                        <select onChange={productstateChangeHandler} value={ProductState}>
+                            {ProductStates.map(item => (
+                                <option key={item.key} value={item.key}> {item.value}</option>
+                            ))}
+                        </select>
+                    </Select>
+                    <br />             
+                    <Select>
+                        <Label><h5>*</h5>교환 여부</Label>
+
+                        <select onChange={tradeChangeHandler} value={Trade}>
+                            {Trades.map(item => (
+                                <option key={item.key} value={item.key}> {item.value}</option>
+                            ))}
+                        </select>
+                    </Select>
+                    <br />        
+                    <Select>
+                        <Label><h5>*</h5>배송</Label>
+
+                        <select onChange={deliveryChangeHandler} value={Delivery}>
+                            {Deliveryway.map(item => (
+                                <option key={item.key} value={item.key}> {item.value}</option>
+                            ))}
+                        </select>
+                    </Select>
+                    <br />
+
+                    <Maintitle>
+                    <Label><h5>*</h5>거래 지역</Label>
+                    <Input onChange={areaChangeHandler} value={Area} />
+                    </Maintitle>
+                    <br />
+
                     <Maintitle>
                     <Label><h5>*</h5>제목</Label>
                     <Input onChange={titleChangeHandler} value={Title} />
@@ -180,12 +262,18 @@ const Select = styled.div`
     margin-top : 20px;
     border-bottom: 2px solid #c2c2c2;
     padding-bottom : 10px;
+    &:hover
+        :focus {
+            border : 1px solid #0095c8;
+
+        }
     >select {
-        width : 150px;
-        height : 40px;
-        font-size : 16px;
-        border-radius : 5px;
-        
+        width : 250px;
+        height : 60px;
+        font-size : 18px;
+        border-radius : 10px;
+        padding-left : 10px;
+    
     }
 `
 const Maintitle = styled.div`

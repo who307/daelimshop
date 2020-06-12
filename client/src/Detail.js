@@ -44,7 +44,7 @@ class Detail extends React.Component {
                 <StateContent>{this.state.productDetail.trade}</StateContent>
               </StateDiv>
               <StateDiv>
-                <StateName>배송비 </StateName>
+                <StateName>배송</StateName>
                 <StateContent space>{this.state.productDetail.delivery}</StateContent>
               </StateDiv>
               <StateDiv>
@@ -175,7 +175,7 @@ const StateName = styled.div`
 const StateContent = styled.div`
   ${(props) => props.space &&
     css`
-      margin-left: 16px;
+      margin-left: 30px;
     `
   }
     >div {
