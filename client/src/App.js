@@ -8,7 +8,6 @@ import QnA from "./QnA";
 import Login from "./Login";
 import SignPage1 from "./SignPage1";
 import SignPage2 from "./SignPage2"
-import SignPage3 from "./SignPage3"
 import Header from "./Header";
 import MobileHeader from "./MobileHeader";
 import Main from "./Main";
@@ -57,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
     background: #fff;
     padding-bottom: 20px;
     border-top : 1px solid #eeeeee;
+    margin-top: 100px;
   }
 `;
 
@@ -158,7 +158,7 @@ class App extends Component {
         <Route path="/logout" component={logout} />
         <Route path="/signpage1" component={SignPage1} />
         <Route path="/signpage2" component={SignPage2} />
-        <Route path="/signpage3" component={SignPage3} />
+
         <footer>
           <Route path="/" component={ Footer } />
         </footer>
