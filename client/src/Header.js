@@ -250,12 +250,7 @@ class Header extends Component {
     });
 
     const menuList = this.props.menuContent.map((menu) => {
-      if(menu.id === 1) {
-        return <Link to="/detail"><MenuContent key={menu.id}>{menu.list}</MenuContent></Link>;
-      } else {
-        return <MenuContent key={menu.id}>{menu.list}</MenuContent>;
-      }
-      
+      return <MenuContent key={menu.id}>{menu.list}</MenuContent>;
     });
 
     const categoryContents = this.props.category.map((ctry) => {
@@ -272,10 +267,10 @@ class Header extends Component {
     let log = this.props.login
     if(log) {
       lgin = "로그아웃";
-      login = <Button><Link to="/login">{lgin}</Link></Button>;
+      login = <Button>{lgin}</Button>;
     } else {
       lgin = "로그인";
-      login =  <Button><Link to="/login">{lgin}</Link></Button>;
+      login =  <Button onClick={this.props.loginOpen}>{lgin}</Button>;
     }
 
     let logState 

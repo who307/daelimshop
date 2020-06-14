@@ -8,10 +8,12 @@ class Main extends React.Component {
       tab: {
         tab1: "의류",
         tab2: "생활용품",
-        tab3: "디지털",
-        tab4: "뷰티",
-        tab5: "도서",
-        tab6: "기타",
+        tab3: "가구/인테리어",
+        tab4: "디지털",
+        tab5: "뷰티",
+        tab6: "자동차/공구",
+        tab7: "도서",
+        tab8: "기타",
       },
       tabState: "전체",
     };
