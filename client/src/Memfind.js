@@ -83,29 +83,6 @@ const H6 = styled.p`
   }
 `
 
-const StudentNum = styled.input.attrs({ type: "text" })`
-  width: 430px;
-  height: 30px;
-  padding: 10px;
-  margin-top: 50px;
-  border-radius: 10px;
-  border: 1px solid #c2c2c2;
-  &:focus,
-  :hover {
-    border-radius: 10px;
-    border: 1px solid #0095c8;
-    outline: none;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
-  }
-
-  @media all and (max-width: 425px) {
-    width: 252px;
-    height: 17px;
-    padding: 8px;
-    margin-top: 70px;
-  }
-`;
-
 const Input = styled.input`
   width: 430px;
   height: 30px;
@@ -211,11 +188,16 @@ class Memfind extends Component {
     const findClick = () => {
       const email = document.getElementById("email");
       const name = document.getElementById("name");
+      const StudentNum = document.getElementById("StudentNum");
       const {history} = this.props;
 
       if(!email.value) {
         alert("이메일을 입력해주세요.");
         email.focus();
+      } else if(!StudentNum.value) {
+        alert("학번을 입력해주세요.");
+        StudentNum.focus();
+        
       } else if(!name.value) {
         alert("이름을 입력해주세요.");
         name.focus();
@@ -234,7 +216,7 @@ class Memfind extends Component {
             <H6>학교 이메일과 이름을 입력해주세요.</H6>
             <EmailInput id="email" placeholder="*대림대학교 이메일" />
             <EmailDiv>@ email.daelim </EmailDiv>
-            <Input type="text" placeholder="학번" id="schoolNum" value={this.state.value} onChange={this.onChange.bind(this)} />
+            <Input type="text" placeholder="학번" id="StudentNum" value={this.state.value} onChange={this.onChange.bind(this)} />
             <Input type="text" placeholder="이름" id="name" />
             <Findbtn onClick={findClick}>찾기</Findbtn>
           </FindBorder>
