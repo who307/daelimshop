@@ -68,9 +68,10 @@ const Logo = styled.div`
   line-height: 45px;
   color: #fff;
   font-weight: bold;
-  font-size: 21px;
+  font-size: 30px;
   float: left;
 `;
+
 
 const Title = styled(Button.withComponent("button"))`
   font-size: 24px;
