@@ -240,7 +240,7 @@ class SignPage1 extends Component {
         alert("모든 약관에 동의해 주세요.");
         return false;
       } else {
-        sign2();
+        this.props.sign2_Open();
       }
     };
 

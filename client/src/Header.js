@@ -279,7 +279,7 @@ class Header extends Component {
     if(lgin ==="로그아웃") {
       logState = <Button>마이페이지</Button>;
     } else if (lgin === "로그인") {
-      logState = <Button><Link to="/signpage1">회원가입</Link></Button>;
+      logState = <Button onClick={this.props.sign1_Open}>회원가입</Button>;
     }
     return (
       <header>

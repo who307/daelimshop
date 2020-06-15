@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { createGlobalStyle, css } from "styled-components";
 import Menu from "./Menu";
 import Footer from "./Footer";
-import Modal from "./Modal";
 import Notices from "./Notices";
 import QnA from "./QnA";
 import Login from "./Login";
@@ -227,6 +226,7 @@ class App extends Component {
               menuContent={this.state.menuContent}
               login={this.state.login}
               loginOpen={this.LoginOpen.bind(this)}
+              sign1_Open={this.sign1_Open.bind(this)}
             />
           } />
         <Contents>
