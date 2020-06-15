@@ -4,7 +4,6 @@ import search from "./icon/search-24px.svg";
 import menu from "./icon/notes-24px.svg";
 import { Link } from "react-router-dom";
 
-
 const TopDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -246,15 +245,30 @@ class Header extends Component {
     this.setState({ searchOpen: true });
   }
 
+  logOut() {
+    console.log('로그아웃실행')
+    sessionStorage.removeItem('logintoken');
+    window.location.href = "/";
+  }
+
+  loginOK() {
+    if(sessionStorage.getItem('logintoken')){
+      this.setState({ login:true });
+    }
+  }
+
+ 
+
   render() {
     const topMenu = this.props.topMenu.map((topM) => {
       return <Button key={topM.id}>{topM.list}</Button>;
     });
 
     const menuList = this.props.menuContent.map((menu) => {
-      if(this.props.login && menu.id === 1) {
+      console.log(this.props.login)
+      if(sessionStorage.getItem('logintoken') && menu.id == 1) {
         return <MenuContent key={menu.id}><Link to="/UploadProductPage">{menu.list}</Link></MenuContent>;
-      } else if(!this.props.login) {
+      } else {
         return <MenuContent onClick={this.props.loginOpen} key={menu.id}>{menu.list}</MenuContent>;
       }
       return <MenuContent key={menu.id}>{menu.list}</MenuContent>;
@@ -269,23 +283,27 @@ class Header extends Component {
     const searchOpen = this.state.searchOpen;
     const {history} = this.props;
 
-    let lgin = ""
-    let login
-    let log = this.props.login
-    if(log) {
-      lgin = "로그아웃";
-      login = <Button>{lgin}</Button>;
+
+    let login = sessionStorage.getItem ('logintoken');
+
+    let log = "";
+
+    if(login) {
+      log="로그아웃"
+      login = <Button onClick={this.logOut.bind(this)}>{log}</Button>;
     } else {
-      lgin = "로그인";
-      login =  <Button onClick={this.props.loginOpen}>{lgin}</Button>;
+      log="로그인"
+    login = <Button onClick={this.props.loginOpen}>{log}</Button>;
     }
+
+
 
     let logState 
 
-    if(lgin ==="로그아웃") {
+    if(login) {
       logState = <Button>마이페이지</Button>;
-    } else if (lgin === "로그인") {
-      logState = <Button onClick={this.props.sign1_Open}>회원가입</Button>;
+    } else {
+      logState = <Button><Link to="/signpage1">회원가입</Link></Button>;
     }
     return (
       <header>

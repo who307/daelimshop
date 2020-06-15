@@ -1,6 +1,11 @@
 import React, { useState, Component } from 'react'
+import { useDispatch } from 'react-redux';
+import { registerUser } from './_actions/user_action';
+import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import styled from "styled-components";
+
+
 
 const Departments = [
   { key: 1, value: "기계" },
@@ -31,13 +36,12 @@ const Departments = [
   { key: 26, value: "호텔조리전공" },
   { key: 27, value: "베이커리카페전공" },
   { key: 28, value: "언어재활" }
-
-
 ]
 
 
 function RegisterPage(props) {
   
+  const dispatch = useDispatch();
 
   const [Email, setEmail] = useState("")
   const [Name, setName] = useState("")
@@ -71,21 +75,46 @@ function RegisterPage(props) {
     setDepartment(event.currentTarget.value)
   }
 
-  
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
     if (Password !== ConfirmPassword) {
-      return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
+        return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
     }
+    // if(Email == unique) {
+    //   return alert('중복되는 아이디가 있습니다..')
+    // }
 
     let body = {
-      email: Email,
-      password: Password,
-      name: Name
+        email: Email,
+        password: Password,
+        name: Name
     }
+    dispatch(registerUser(body))
+        .then(response => {
+            if (response.payload.success) {
+                props.history.push("/")
+                console.log("가입이 완료되었습니다.")
+            } else {
+                alert("Failed to sign up ")
+            }
+        })
+}
+  // const onSubmitHandler = (event) => {
+  //   event.preventDefault();
 
-  }
+  //   if (Password !== ConfirmPassword) {
+  //     return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
+  //   }
+
+  //   let body = {
+  //     email: Email,
+  //     password: Password,
+  //     name: Name
+  //   }
+
+  // }
   const Paging = [];
   var i = 0;
 
@@ -99,11 +128,12 @@ function RegisterPage(props) {
 
   return (
     <Container>
-      <Backgroud onClick={props.sign2_Open} />
+                  
+
     <form onSubmit={onSubmitHandler}>
       <SignDiv>
         <SignBorder>
-        <Close onClick={props.sign2_Open} ><img src="./icon/clear-24px.svg" alt=""/></Close>
+       <img src="./icon/clear-24px.svg" alt=""/>
           <PagingDiv>{Paging}</PagingDiv>
           <Subtitle>회원가입을 진행해주세요.</Subtitle>
           <Step>STEP 02</Step>
@@ -111,7 +141,9 @@ function RegisterPage(props) {
           <InputDiv>
             <NameInput type="text" value={Name} onChange={onNameHandler} placeholder="*성명" />
             <IdInput type="email" value={Email} onChange={onEmailHandler} placeholder="*아이디" />
-            <SubmitBtn>아이디 중복 체크</SubmitBtn>
+            
+            <Btn>아이디 중복 체크</Btn>
+
             <PwdInput type="password" value={Password} onChange={onPasswordHandler} placeholder="*비밀번호" />
             <PwdInput type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler} placeholder="*비밀번호 확인" />
             {/* <EmailInput placeholder="*이메일" /> */}
@@ -312,7 +344,7 @@ const IdInput = styled.input.attrs({ type: "text" })`
   }
 `
 
-const SubmitBtn = styled.button`
+const Btn = styled.button`
   width: 132px;
   height: 50px;
   border-radius: 10px;

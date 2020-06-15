@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import close from "./icon/clear-24px.svg";
 
 
 const Container = styled.div`
@@ -208,7 +209,7 @@ class SignPage1 extends Component {
     let check = false;
     const chk = document.getElementsByName("checking");
     const allCheckBtn = document.getElementsByName("allCheckBtn");
-    
+    const sign2 = this.props.sign2_Open;
 
     const CheckAll = () => {
       if (!allCheckBtn.checked) {
@@ -239,6 +240,8 @@ class SignPage1 extends Component {
         alert("모든 약관에 동의해 주세요.");
         return false;
       } else {
+      
+
         this.props.sign2_Open();
       }
     };
@@ -248,7 +251,7 @@ class SignPage1 extends Component {
         <SignDiv>
           <Backgroud onClick={this.props.sign1_Open} />
           <SignBorder>
-            <Close onClick={this.props.sign1_Open} ><img src="./icon/clear-24px.svg" alt="" /></Close>
+            <img src="./icon/clear-24px.svg" alt="" />
             <PagingDiv>{Paging}</PagingDiv>
             <Subtitle>약관에 동의해 주세요</Subtitle>
             <Step>STEP 01</Step>

@@ -28,7 +28,7 @@ const Trades = [
 const Deliveryway = [
     { key: 1, value: "직거래" },
     { key: 2, value: "택배착불" },
-    { key: 2, value: "택배선불" }
+    { key: 3, value: "택배선불" }
 
 ]
 
@@ -39,10 +39,12 @@ function UploadProductPage(props) {
     const [Price, setPrice] = useState(0)
     const [Continent, setContinent] = useState(1)
     const [Images, setImages] = useState([])
-    const [ProductState, setProductState] = useState([1])
-    const [Trade, setTrade] = useState([1])
-    const [Delivery, setDelivery] = useState([1])
-    const [Area, setArea] = useState([])
+    //
+    const [ProductState, setProductState] = useState(1) // 상품상태
+    const [Trade, setTrade] = useState(1)     // 교환
+    const [Delivery, setDelivery] = useState(1)    //배송
+    const [Area, setArea] = useState("")     //지역
+    //
 
     const titleChangeHandler = (event) => {
         setTitle(event.currentTarget.value)
@@ -96,7 +98,7 @@ function UploadProductPage(props) {
 
         const body = {
             //로그인 된 사람의 ID 
-            writer: props.user.userData._id,
+            writer: window.localStorage.getItem('userId'),
             title: Title,
             description: Description,
             price: Price,
@@ -107,6 +109,7 @@ function UploadProductPage(props) {
             delivery : Delivery,
             area : Area
         }
+        console.log("writer : " + body.writer)
 
         Axios.post('/api/product', body)
             .then(response => {
@@ -121,7 +124,6 @@ function UploadProductPage(props) {
 
 
     return (
-        
 
 
         <Div>
@@ -313,6 +315,7 @@ const Label = styled.div`
 const Container = styled.div`
     width : 1200px;
     text-align : left;
+
 `
 const Contents = styled.div` 
     margin-top : 25px;
