@@ -1,7 +1,4 @@
 import React, { useState, Component } from 'react'
-import { useDispatch } from 'react-redux';
-import { registerUser } from './_actions/user_action';
-import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import styled from "styled-components";
 

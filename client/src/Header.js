@@ -4,6 +4,7 @@ import search from "./icon/search-24px.svg";
 import menu from "./icon/notes-24px.svg";
 import { Link } from "react-router-dom";
 
+
 const TopDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -251,6 +252,11 @@ class Header extends Component {
     });
 
     const menuList = this.props.menuContent.map((menu) => {
+      if(this.props.login && menu.id === 1) {
+        return <MenuContent key={menu.id}><Link to="/UploadProductPage">{menu.list}</Link></MenuContent>;
+      } else if(!this.props.login) {
+        return <MenuContent onClick={this.props.loginOpen} key={menu.id}>{menu.list}</MenuContent>;
+      }
       return <MenuContent key={menu.id}>{menu.list}</MenuContent>;
     });
 

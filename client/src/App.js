@@ -11,7 +11,7 @@ import SignPage2 from "./SignPage2"
 import Header from "./Header";
 import MobileHeader from "./MobileHeader";
 import Main from "./Main";
-import Product from "./Product"
+import UploadProductPage from "./UploadProductPage"
 import Detail from "./Detail"
 import Memfind from "./Memfind"
 import Pwdfind1 from "./Pwdfind1"
@@ -63,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
     background: #fff;
     padding-bottom: 20px;
   }
+
 `;
 
 const PcScreen = styled.div`
@@ -236,9 +237,11 @@ class App extends Component {
               <Main category={this.state.category} product={this.state.product} />
             } />
           <Route path="/detail" component={Detail} />
+          <Route path="/UploadProductPage" component={UploadProductPage} />
         </Contents>
         <Route path="/signpage1" component={SignPage1} />
         <Route path="/signpage2" component={SignPage2} />
+        
         <footer>
           <Route path="/" component={Footer} />
         </footer>

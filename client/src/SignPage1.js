@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import close from "./icon/clear-24px.svg";
 
 
 const Container = styled.div`
@@ -209,7 +208,7 @@ class SignPage1 extends Component {
     let check = false;
     const chk = document.getElementsByName("checking");
     const allCheckBtn = document.getElementsByName("allCheckBtn");
-    const sign2 = this.props.sign2_Open;
+    
 
     const CheckAll = () => {
       if (!allCheckBtn.checked) {

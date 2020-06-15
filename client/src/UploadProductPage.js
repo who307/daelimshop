@@ -121,6 +121,7 @@ function UploadProductPage(props) {
 
 
     return (
+        
 
 
         <Div>
@@ -312,7 +313,6 @@ const Label = styled.div`
 const Container = styled.div`
     width : 1200px;
     text-align : left;
-    float :left;
 `
 const Contents = styled.div` 
     margin-top : 25px;
