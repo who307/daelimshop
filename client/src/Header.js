@@ -81,6 +81,18 @@ const Title = styled(Button.withComponent("button"))`
   line-height: 45px;
   margin-left: 15px;
 `;
+const Center = styled(Button.withComponent("button"))`
+  font-size: 18px;
+  font-weight: bold;
+  color: #b1b1b1;
+  float: left;
+  line-height: 45px;
+  margin-left: 32px;
+
+  &:hover {
+    color: #000;
+  }
+`;
 
 const MenuContent = styled(Button.withComponent("button"))`
   font-size: 18px;
@@ -288,12 +300,14 @@ class Header extends Component {
 
     let log = "";
 
+    let logout = "";
+
     if(login) {
       log="로그아웃"
-      login = <Button onClick={this.logOut.bind(this)}>{log}</Button>;
+      logout = <Button onClick={this.logOut.bind(this)}>{log}</Button>;
     } else {
       log="로그인"
-    login = <Button onClick={this.props.loginOpen}>{log}</Button>;
+      logout = <Button onClick={this.props.loginOpen}>{log}</Button>;
     }
 
 
@@ -303,7 +317,7 @@ class Header extends Component {
     if(login) {
       logState = <Button>마이페이지</Button>;
     } else {
-      logState = <Button><Link to="/signpage1">회원가입</Link></Button>;
+      logState = <Button onClick={this.props.sign1_Open}>회원가입</Button>;
     }
     return (
       <header>
@@ -312,7 +326,7 @@ class Header extends Component {
             <LeftDiv />
             <BtnDiv>               
               {logState}
-              {login}
+              {logout}
             </BtnDiv>
           </Top>
         </TopDiv>
@@ -321,9 +335,13 @@ class Header extends Component {
             <div>
               <Link to="/">
                 <Logo>D</Logo>
-                <Title>대중장</Title>
+                <Title>대중장</Title>   
+              
               </Link>
               {menuList}
+              <Link to="/Qna">
+              <Center>고객센터</Center>
+              </Link>
             </div>
             <SearchDiv onClick={this.search.bind(this)} search={this.state.searchOpen} >
               {searchOpen === true &&(

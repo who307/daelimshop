@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./accordion.css";
 import styled from "styled-components";
+import Menu from "./Menu";
 
 function QnA() {
   const [faqs, setfaqs] = useState([
@@ -39,7 +40,10 @@ function QnA() {
   };
 
   return (
-    <div className="App">
+    
+    <Container>
+      <Menu>
+      </Menu>
       <div className="faqs">
         <Qna>
           <H6>Q&A</H6>
@@ -49,12 +53,14 @@ function QnA() {
           <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 
 function FAQ({ faq, index, toggleFAQ }) {
   return (
+    <div>
+    
     <div
       className={"faq " + (faq.open ? "open" : "")}
       key={index}
@@ -69,8 +75,14 @@ function FAQ({ faq, index, toggleFAQ }) {
         {faq.answer}
       </div>
     </div>
+    </div>
+    
   );
 }
+const Container = styled.div`
+  width : 1200px;
+  margin : auto;
+`;
 
 const Qna = styled.div`
   border-bottom: solid 1px #e7e7e7;

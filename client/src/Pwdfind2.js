@@ -51,7 +51,6 @@ const FindBorder = styled.div`
 `;
 
 const Close = styled.div`
-  cursor: pointer;
   margin-top: 10px;
   margin-left: 20px;
   width: 30px;

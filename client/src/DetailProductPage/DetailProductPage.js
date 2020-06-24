@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styled, { css } from 'styled-components';
 import axios from 'axios';
 import ProductImage from './Sections/ProductImage';
 import ProductInfo from './Sections/ProductInfo';
@@ -21,32 +22,29 @@ function DetailProductPage(props) {
 
 
     return (
-        <div >
+        <Container >
 
             <div >
                 <h1>{Product.title}</h1>
             </div>
 
             <br />
-            <div  style={{ width: '30%', Height: '30%' }}>
-                <Row gutter={[16, 16]} >
-                    <Col lg={12} sm={24}>
-                        {/* ProductImage */}
+            
+                        <Div>
                         <ProductImage detail={Product} />
-                    </Col>
-                    <Col lg={12} sm={24}>
-                        {/* ProductInfo */}
                         <ProductInfo detail={Product} />
-                    </Col>
-                </Row>
-            </div>
+                        </Div>
+            </Container>
 
-
-
-
-
-        </div>
     )
 }
+const Div = styled.div `
+  margin : auto;
+`
+const Container = styled.div`
+  margin: 0 auto;
+  width: 1200px;
+  height : 500px;
+`
 
 export default DetailProductPage

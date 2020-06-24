@@ -11,11 +11,21 @@ import SignPage2 from "./SignPage2"
 import Header from "./Header";
 import MobileHeader from "./MobileHeader";
 import Main from "./Main";
-import UploadProductPage from "./UploadProductPage"
 import Detail from "./Detail"
 import Memfind from "./Memfind"
 import Pwdfind1 from "./Pwdfind1"
 import Pwdfind2 from "./Pwdfind2"
+import UploadProductPage from "./UploadProductPage"
+import DetailProductPage from "./DetailProductPage/DetailProductPage"
+
+import LandingPage from "./LandingPage";
+
+
+
+
+
+
+
 
 const GlobalStyle = createGlobalStyle`
 
@@ -63,7 +73,6 @@ const GlobalStyle = createGlobalStyle`
     background: #fff;
     padding-bottom: 20px;
   }
-
 `;
 
 const PcScreen = styled.div`
@@ -84,6 +93,13 @@ const Contents = styled.div`
   margin-bottom: 100px;
 `;
 
+const Land = styled.div`
+width: 100%;
+margin-top: 230px;
+margin-bottom: 100px;
+`;
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -91,6 +107,7 @@ class App extends Component {
       menuContent: [
         { id: 1, list: "판매", link: "" },
         { id: 2, list: "쪽지", link: "" },
+        
       ],
 
       topMenu: [
@@ -114,7 +131,6 @@ class App extends Component {
         yaer: "3",
       },
 
-      login: false,
 
       product: [
         { key: 0, name: "디지털 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "디지털" },
@@ -134,25 +150,40 @@ class App extends Component {
       signpage2: false,
       idFind: false,
       pwdFind1: false,
-      pwdFind2: false
+      pwdFind2: false,
+
     };
+  }
+
+  // && !sessionStorage.getItem('logintoken')
+
+  
+
+  LogOut() {
+    console.log('로그아웃실행')
+    sessionStorage.removeItem('logintoken');
+    // window.location.href = "/";
   }
 
   LoginOpen() {
     this.setState({ LoginOpen: true });
-    if (this.state.LoginOpen === true) {
+    if (this.state.LoginOpen == true) {
+      console.log('Modalout 성공')
       this.setState({ LoginOpen: false });
+      
+      // window.location.href="/";
     }
   }
+
 
   sign1_Open() {
     this.setState({ signpage1: true });
 
-    if (this.state.signpage1 === true) {
+    if (this.state.signpage1 == true) {
       this.setState({ signpage1: false });
     }
 
-    if (this.state.LoginOpen === true) {
+    if (this.state.LoginOpen == true) {
       this.setState({ LoginOpen: false });
       this.setState({ signpage1: true });
     }
@@ -205,12 +236,12 @@ class App extends Component {
   }
 
   render() {
-    const loginState = this.state.login;
+    
     let screen;
     console.log(this.state.LoginOpen)
 
     if (this.state.LoginOpen || this.state.signpage1 || this.state.signpage2 || this.state.idFind) {
-      screen = <GlobalStyle hidden />
+      screen = <GlobalStyle />
     } else {
       screen = <GlobalStyle />
     }
@@ -225,26 +256,54 @@ class App extends Component {
               category={this.state.category}
               topMenu={this.state.topMenu}
               menuContent={this.state.menuContent}
-              login={this.state.login}
+              // login={this.state.login}
               loginOpen={this.LoginOpen.bind(this)}
+
               sign1_Open={this.sign1_Open.bind(this)}
+              
+              // idFind={this.idFind.bind(this)}
+              // pwdFind1={this.pwdFind_1.bind(this)}
+              //
             />
+           
           } />
+          
+
         <Contents>
-          <Route
+          {/* <Route
             exact path='/'
             render={() =>
               <Main category={this.state.category} product={this.state.product} />
-            } />
-          <Route path="/detail" component={Detail} />
+              
+            } /> */}
+          <Route exact path="/" component={LandingPage} />
           <Route path="/UploadProductPage" component={UploadProductPage} />
+          <Route path="/product/:productId" component={DetailProductPage} />
+          <Route path="/Qna" component={QnA} />
+          <Route path="/Notices" component={Notices} />
+          <Route path="/Menu" component={Menu} />
+
         </Contents>
         <Route path="/signpage1" component={SignPage1} />
         <Route path="/signpage2" component={SignPage2} />
-        
+
+            
+            
+
+        {/* <Footer></Footer> */}
         <footer>
           <Route path="/" component={Footer} />
         </footer>
+ 
+
+
+
+
+
+        {/* <Route path="/product/:productId" component={Detail} /> */}
+
+
+
         {this.state.LoginOpen === true && (
           <Login
             loginOpen={this.LoginOpen.bind(this)}

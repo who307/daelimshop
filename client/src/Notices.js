@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './accordion.css';
 import styled from 'styled-components';
+import Menu from "./Menu";
 
 function Notices() {
 
@@ -12,7 +13,7 @@ function Notices() {
             open: false
         },
         {
-            question: '가',
+            question: '대중장 운영',
             answer: '금시대를 것은 우리의 별과 보라. 가슴에 대고, 얼음이 가치를 군영과 얼마나 그리하였는가? 역사를 광야에서 같은 있으며, 품으며, 얼마나 이성은 얼마나 말이 속잎나고, 있을 동산에는 충분히 끓는다.',
             open: false
         }
@@ -32,16 +33,19 @@ function Notices() {
 
 
     return (
+        <Container>
+            <Menu></Menu>
         <div className="App">
             <div className="faqs">
                 <Qna>
-                    <H6>Q&A</H6>
+                    <H6>공지사항</H6>
                 </Qna>
                 {faqs.map((faq, i) => (
                     <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
                 ))}
             </div>
         </div>
+        </Container>
     );
 
 }
@@ -68,6 +72,10 @@ function FAQ({ faq, index, toggleFAQ }) {
 
     )
 }
+const Container = styled.div`
+     width : 1200px;
+     margin : auto;
+`
 
 const Qna = styled.div`
     border-bottom: solid 1px #E7E7E7;

@@ -195,7 +195,7 @@ const AllAgree = styled.input.attrs({ type: "checkbox" })`
   height: 18px;
 `;
 
-class SignPage1 extends Component {
+class SignPage1 extends React.Component {
   render() {
     const Paging = [];
     for (var i = 0; i < 2; i++) {
@@ -240,8 +240,6 @@ class SignPage1 extends Component {
         alert("모든 약관에 동의해 주세요.");
         return false;
       } else {
-      
-
         this.props.sign2_Open();
       }
     };
@@ -251,7 +249,7 @@ class SignPage1 extends Component {
         <SignDiv>
           <Backgroud onClick={this.props.sign1_Open} />
           <SignBorder>
-            <img src="./icon/clear-24px.svg" alt="" />
+            <Close onClick={this.props.sign1_Open}><img src="./icon/clear-24px.svg" alt="" /></Close>
             <PagingDiv>{Paging}</PagingDiv>
             <Subtitle>약관에 동의해 주세요</Subtitle>
             <Step>STEP 01</Step>

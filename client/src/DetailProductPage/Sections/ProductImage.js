@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ImageGallery from 'react-image-gallery';
+import styled from "styled-components";
+
 
 function ProductImage(props) {
 
@@ -13,7 +15,7 @@ function ProductImage(props) {
             props.detail.images.map(item => {
                 images.push({
                     original: `http://localhost:5000/${item}`,
-                    thumbnail: `http://localhost:5000/${item}`
+                   
                 })
             })
             setImages(images)
@@ -22,10 +24,30 @@ function ProductImage(props) {
     }, [props.detail])
 
     return (
-        <div>
+        <Container>
+
+        <Size>
             <ImageGallery items={Images} />
-        </div>
+        </Size>
+
+        </Container>
     )
 }
+const Container = styled.div`
+
+width : 1200px;
+height : 800px;
+
+`
+const Size = styled.div `
+    float : left;
+    margin-left : 100px;
+    padding : 10px;
+
+    img {
+        width: 500px;
+        height : 400px;
+    }
+`
 
 export default ProductImage

@@ -238,7 +238,7 @@ const ProductImgDiv = styled.div`
 
   > img {
     width: 100%;
-    height: 100%;
+    height: 190px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }

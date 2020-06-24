@@ -1,66 +1,98 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import Axios from 'axios'
+import { useDispatch } from 'react-redux';
+import { loginUser } from './_actions/user_action';
+import { withRouter } from 'react-router-dom';
+
 import { Link } from 'react-router-dom';
-import close from "./icon/clear-24px.svg";
+import styled from 'styled-components';
 
 
-class Login extends React.Component {
+function LoginPage(props) {
+  const dispatch = useDispatch();
 
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
+  const [Email, setEmail] = useState("")
+  const [Password, setPassword] = useState("")
+
+
+  // const [loginOpen, setloginOpen] = useState("")
+
+
+  // const onloginOpen = (event) => {
+  //     setloginOpen(event.currentTarget.value)
+  // }
+
+
+  const onEmailHandler = (event) => {
+    setEmail(event.currentTarget.value)
   }
 
-  render() {
+  const onPasswordHandler = (event) => {
+    setPassword(event.currentTarget.value)
+  }
 
-    const loginOpen = this.props.loginOpen;
+  // const loginOK = (event) => {
+  //     if(sessionStorage.getItem('logintoken')){
+  //       props.loginOK({ loginOK = true });
+  //     }
+  //   }
 
-    const loginClick = () => {
-      const userid = document.getElementById("userid");
-      const password = document.getElementById("password");
-      const { history } = this.props;
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
 
-      if (!userid.value) {
-        alert("아이디를 입력해주세요.");
-        userid.focus();
-      } else if (!password.value) {
-        alert("비밀번호를 입력해주세요.");
-        password.focus();
-      } else {
-        history.push("/#");
-      }
+    let body = {
+      email: Email,
+      password: Password
     }
-    return (
-
-      <Container>
-        <Backgroud onClick={this.props.loginOpen} />
-
-        <Div>
-          <Close onClick={this.props.loginOpen} ><img src="./icon/clear-24px.svg" alt="" /></Close>
-          <Img src="./일러스트/people-welcoming-concept-with-foliage-background/2769504.jpg" alt="Welcome DaelimSecondHandShop" width="600px" height="400px"></Img>
-          <H4>대중장에 오신것을</H4>
-          <H1>환영합니다!</H1>
-          <H5>서비스의 원활한 이용을 위해 로그인을 진행해 주시기 바랍니다.</H5>
-          <form>
-            <Input type="text" placeholder="아이디" id="userid" /><br></br>
-            <Input type="password" placeholder="비밀번호" id="password" />
-            <Loginbtn onClick={loginClick}>로그인</Loginbtn>
-          </form>
-
-          <Memberservice>
-            <Memberfind onClick={this.props.idFind}>아이디 찾기</Memberfind>
-            <B>|</B>
-            <Passwordfind onClick={this.props.pwdFind1}>비밀번호 찾기</Passwordfind>
-            <B>|</B>
-            <Join onClick={this.props.sign1_Open}>회원가입</Join>
-          </Memberservice>
-        </Div>
-      </Container>
-    );
+    dispatch(loginUser(body))
+      .then(response => {
+        if (response.payload.loginSuccess) {
+          console.log('로그인성공')
+          sessionStorage.setItem('logintoken', true);
+          window.localStorage.setItem('userId', response.payload.userId);
+          window.location.href = "/"
+        } else {
+          alert('ID 또는 비밀번호가 올바르지 않습니다.')
+        }
+      })
   }
+
+  const newLoing = (event) => {
+    props.sign1_Open();
+  }
+
+  return (
+
+    <Container>
+
+
+      <Backgroud onClick={props.loginOpen} />
+
+      <Div>
+        <Close onClick={props.loginOpen} ><img src="./icon/clear-24px.svg" alt="" /></Close>
+
+        <Img src="../일러스트/people-welcoming-concept-with-foliage-background/2769504.jpg" alt="Welcome DaelimSecondHandShop" width="600px" height="400px"></Img>
+        <H4>대중장에 오신것을</H4>
+        <H1>환영합니다!</H1>
+        <H5>서비스의 원활한 이용을 위해 로그인을 진행해 주시기 바랍니다.</H5>
+        <form onSubmit={onSubmitHandler}>
+          <Input type="text" placeholder="아이디" id="userid" value={Email} onChange={onEmailHandler} /><br></br>
+          <Input type="password" placeholder="비밀번호" id="password" value={Password} onChange={onPasswordHandler} />
+          <Loginbtn type="submit">로그인</Loginbtn>
+        </form>
+
+        <Memberservice>
+          <Memberfind onClick={props.idFind} >아이디 찾기</Memberfind>
+          <B>|</B>
+          <Passwordfind onClick={props.pwdFind1} >비밀번호 찾기</Passwordfind>
+          <B>|</B>
+          <Join onClick={newLoing} >회원가입</Join>
+        </Memberservice>
+
+      </Div>
+    </Container>
+  )
 }
-
-
 const Container = styled.div`
     position: fixed;
     top: 0;
@@ -216,4 +248,4 @@ const B = styled.b`
     margin : 0 30px 0 30px;
 `
 
-export default Login;
+export default withRouter(LoginPage)

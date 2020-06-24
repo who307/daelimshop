@@ -174,14 +174,15 @@ const Findbtn = styled.button`
 `;
 
 const Close = styled.div`
-  cursor: pointer;
-  margin-top: 30px;
-  margin-left: 40px;
+  margin-top: 10px;
+  margin-left: 20px;
   width: 30px;
   float: left;
   >img {
     width: 30px;
     height: 30px;
+    margin : 20px;
+    cursor: pointer;
   }
 `
 

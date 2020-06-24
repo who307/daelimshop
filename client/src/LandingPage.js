@@ -6,9 +6,9 @@ import Meta from 'antd/lib/card/Meta';
 import ImageSlider from './ImageSlider';
 import Checkbox from './CheckBox';
 import Radiobox from './RadioBox';
+import SearchFeature from './SearchFeature';
 import { continents, price } from './Datas';
 import styled from 'styled-components';
-
 
 
 function LandingPage() {
@@ -49,25 +49,25 @@ function LandingPage() {
             })
     }
 
-
-
-
-
-
-
     const renderCards = Products.map((product, index) => {
 
         return <Col lg={6} md={8} xs={24} key={index}>
             <Cards>
-               {<a href={`/product/${product._id}`} >
-                   <Img>
-                   <ImageSlider images={product.images} />
-                   </Img>
-                   </a>}
-                <Meta
+                {<a href={`/product/${product._id}`} >
+                    <Img>
+                        <ImageSlider images={product.images} />
+                    </Img>
+                </a>}
+                <ProductAccount>
+                    <ProductTitle>
+                        {product.title}
+                    </ProductTitle>
+                    <Price>{product.price}원</Price>
+                </ProductAccount>
+                {/* <Meta
                     title={product.title}
-                    description={`$${product.price}`}
-                />
+                    description={`${product.price}원`}
+                /> */}
             </Cards>
         </Col>
     })
@@ -82,9 +82,7 @@ function LandingPage() {
 
         getProducts(body)
         setSkip(0)
-
     }
-
 
     const handlePrice = (value) => {
         const data = price;
@@ -114,33 +112,36 @@ function LandingPage() {
         setFilters(newFilters)
     }
 
-
-
-
     return (
         <Container>
-
-            <Row gutter={[16, 16]}>
-                <Col lg={12} xs={24}>
-                    {/* CheckBox */}
+            <CategoryTitle>카테고리별 상품</CategoryTitle>
+            <CategoryTab>
+                <CategoryList>
                     <Checkbox list={continents} handleFilters={filters => handleFilters(filters, "continents")} />
-                </Col>
-                <Col lg={12} xs={24}>
-                    {/* RadioBox */}
-                    <Radiobox list={price} handleFilters={filters => handleFilters(filters, "price")} />
-                </Col>
-            </Row>
+                </CategoryList>
+            </CategoryTab>
+            {/* 
+            {/* Search */}
 
+            {/* <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '1rem auto' }}>
+                <SearchFeature
+                    refreshFunction={updateSearchTerm}
+                />
+            </div>  */}
+
+            {/* Cards */}
 
             <Card>
-            
-                {renderCards}
-            
+                <CardDiv>
+                    <SecDiv>
+                        {renderCards}
+                    </SecDiv>
+                </CardDiv>
             </Card>
-           
+
 
             <br />
-    
+
 
         </Container>
     )
@@ -149,24 +150,83 @@ const Container = styled.div`
   margin: 0 auto;
   width: 1200px;
   height :500px;
-  justify-content : center;
   
-
+  
   > div {
     width: 100%;
   }
 `;
 
-const Cards = styled.div `
-    float : left;
-    border : solid 1px lightgrey;
-    padding : 10px;
+const CardDiv = styled.div `
+width: 1200px;
+margin: 0 auto;
 `
-const Img = styled.div `
-    width : 275px;
-    height : 150px;
-    display : flex;
+const SecDiv = styled.div `
+  display: flex;
+  flex-wrap: wrap;
+
 `
+
+const CategoryTitle = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  float: left;
+  width: 100%;
+  padding-bottom: 20px;
+  display: flex;
+`;
+
+const CategoryTab = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
+const CategoryList = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+`;
+
+const Cards = styled.div`
+    width: 225px;
+    height: 290px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-right: 18.5px;
+`
+const Img = styled.div`
+    width: 225px;
+    height: 190px;
+
+    div {
+        height: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+`
+
+const ProductAccount = styled.div`
+  padding: 20px 15px;
+`;
+
+const ProductTitle = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+`;
+const Price = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24px;
+  font-weight: bold;
+`;
 
 
 

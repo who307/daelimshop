@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Collapse, Checkbox } from 'antd';
+import styled from "styled-components";
 
 const { Panel } = Collapse;
 
@@ -24,27 +25,42 @@ function CheckBox(props) {
         props.handleFilters(newChecked)
     }
 
-
-
     const renderCheckboxLists = () => props.list && props.list.map((value, index) => (
         <React.Fragment key={index} >
-            <Checkbox onChange={() => handleToggle(value._id)}
-                checked={Checked.indexOf(value._id) === -1 ? false : true} />
-            <span>{value.name}</span>
+            <Label1>
+                <Checkbox onChange={() => handleToggle(value._id)}
+                    checked={Checked.indexOf(value._id) === -1 ? false : true} />
+                <span>{value.name}</span>
+            </Label1>
         </React.Fragment>
     ))
 
     return (
         <div>
             <Collapse defaultActiveKey={['0']} >
-                <Panel header="Continents" key="1">
-
-                    {renderCheckboxLists()}
-
-                </Panel>
+                {renderCheckboxLists()}
             </Collapse>
         </div>
     )
 }
+
+const Label1 = styled.label `
+    >span {
+        width: 50px;
+        padding 20px;
+        margin-right: 50px;
+        font-size: 24px;
+        :hover {
+            font-weight: bold;
+        }
+    }
+    >span:nth-child(6) {
+        margin-right: 0;
+    }
+
+    input {
+        display: none;
+    }
+`
 
 export default CheckBox

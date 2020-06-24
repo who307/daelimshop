@@ -100,6 +100,10 @@ function RegisterPage(props) {
                 alert("Failed to sign up ")
             }
         })
+
+    const alert1 = (event) => {
+      return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
+    }
 }
   // const onSubmitHandler = (event) => {
   //   event.preventDefault();
@@ -115,6 +119,11 @@ function RegisterPage(props) {
   //   }
 
   // }
+
+  const alert = () => {
+    window.location.reload();
+    }
+
   const Paging = [];
   var i = 0;
 
@@ -132,8 +141,9 @@ function RegisterPage(props) {
 
     <form onSubmit={onSubmitHandler}>
       <SignDiv>
-        <SignBorder>
-       <img src="./icon/clear-24px.svg" alt=""/>
+      <Backgroud onClick={props.sign2_Open} />
+      <SignBorder>
+       <Close onClick={props.sign2_Open}><img src="./icon/clear-24px.svg" alt=""/></Close>
           <PagingDiv>{Paging}</PagingDiv>
           <Subtitle>회원가입을 진행해주세요.</Subtitle>
           <Step>STEP 02</Step>
@@ -160,7 +170,7 @@ function RegisterPage(props) {
             <SchoolNumInput value={SchoolNum} onChange={onSchoolNumHandler} placeholder="*학번" />
           
           </InputDiv>
-          <NextBtn type="submit">가입 완료</NextBtn>
+          <NextBtn type="submit" onClick={alert}>가입 완료</NextBtn>
         </SignBorder>
       </SignDiv>
 

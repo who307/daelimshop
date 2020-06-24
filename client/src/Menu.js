@@ -33,8 +33,8 @@ const Menu = (match) => {
 const Container = styled.div`
   display: flex;
   text-align: left;
-  margin-top: 18%;
   width: 321px;
+  float : left;
 `;
 const Menubar = styled.div`
   width: 321px;

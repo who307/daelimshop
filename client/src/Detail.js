@@ -1,35 +1,31 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import ProductImage from './DetailProductPage/Sections/ProductImage';
+import ProductInfo from './DetailProductPage/Sections/ProductInfo';
 
-class Detail extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productDetail: {
-        title: "title(제목)ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ",
-        price: "1,000(가격)",
-        productState: "중고(상품상태)",
-        trade: "교환불가",
-        delivery: "택배 착불",
-        area: "서울",
-        img: "/image/bird-932704_640.jpg",
-        info: " 직거래 합니다 상태좋음 "
-    },sellerinfo : {
-        id : "who307",
-        name : "문건후",
-        department : "모바일인터넷",
-        schoolnum : "201540209"
-      }
-    }
 
-}
-  render() {
+function Detail(props)  {
+  
+  const productId = props.match.params.productId
+
+    const [Product, setProduct] = useState({})
+
+    useEffect(() => {
+        axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
+            .then(response => {
+                setProduct(response.data[0])
+            })
+            .catch(err => alert(err))
+    }, [])
+
     return (
       <Container>
         <TopDiv>
           <ImgDiv>
-            <img src={this.state.productDetail.img} alt="product1" />
+          <ProductImage detail={Product} />
           </ImgDiv>
+          <ProductInfo detail={Product} />
           <TextDiv>
             <Title>{this.state.productDetail.title}</Title>
             <Price>{this.state.productDetail.price}<div>원</div></Price>
@@ -101,7 +97,7 @@ class Detail extends React.Component {
       </Container>
     )
   }
-}
+
 
 const Container = styled.div`
   margin: 0 auto;
