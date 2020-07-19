@@ -339,7 +339,7 @@ class Header extends Component {
               
               </Link>
               {menuList}
-              <Link to="/Qna">
+              <Link to="/notices">
               <Center>고객센터</Center>
               </Link>
             </div>

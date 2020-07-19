@@ -21,7 +21,7 @@ const Footer = () => {
       <Copyright>
         Copyright ⓒ 2020.KimRyuMoon. All right reserved
         </Copyright>
-        <Question>
+      <Question>
         고객센터 02-852-9632 ㅣ 제휴문의 who307@naver.com
       </Question>
 

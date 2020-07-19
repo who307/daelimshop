@@ -9,19 +9,14 @@ const Menu = (match) => {
         <P>메뉴</P>
         <Hr></Hr>
         <Ul>
-          <Li>
-            <Link to="#">
-              <Requests>문의하기</Requests>
+        <Li>
+            <Link to="/notices">
+              <Notices>공지사항</Notices>
             </Link>
           </Li>
           <Li>
             <Link to="/qna">
               <Qna>Q&A</Qna>
-            </Link>
-          </Li>
-          <Li>
-            <Link to="/notices">
-              <Notices>공지사항</Notices>
             </Link>
           </Li>
         </Ul>
@@ -61,15 +56,6 @@ const Li = styled.li`
 const Ul = styled.ul`
   margin-top: 25px;
   padding: 0;
-`;
-const Requests = styled.a`
-  color: #b1b1b1;
-  &:hover {
-    color: #0095c8;
-  }
-  &:visited {
-    color: #0095c8;
-  }
 `;
 
 const Qna = styled.a`

@@ -256,7 +256,7 @@ class App extends Component {
               category={this.state.category}
               topMenu={this.state.topMenu}
               menuContent={this.state.menuContent}
-              // login={this.state.login}
+               login={this.state.login}
               loginOpen={this.LoginOpen.bind(this)}
 
               sign1_Open={this.sign1_Open.bind(this)}
@@ -265,18 +265,19 @@ class App extends Component {
               // pwdFind1={this.pwdFind_1.bind(this)}
               //
             />
-           
+            
           } />
+          
           
 
         <Contents>
-          {/* <Route
+          {<Route
             exact path='/'
             render={() =>
               <Main category={this.state.category} product={this.state.product} />
               
-            } /> */}
-          <Route exact path="/" component={LandingPage} />
+            } /> }
+          {/* <Route exact path="" component={LandingPage} /> */}
           <Route path="/UploadProductPage" component={UploadProductPage} />
           <Route path="/product/:productId" component={DetailProductPage} />
           <Route path="/Qna" component={QnA} />

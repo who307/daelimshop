@@ -17,12 +17,6 @@ function QnA() {
         "청춘의 낙원을 앞이 대한 그들은 길을 아름다우냐? 작고 오아이스도 그들의 있을 그들의 트고, 사막이다. 있는 같으며, 따뜻한 그리하였는가? 얼마나 들어 황금시대를 것은 우리의 별과 보라. 가슴에 대고, 얼음이 가치를 군영과 얼마나 그리하였는가? 역사를 광야에서 같은 있으며, 품으며, 얼마나 이성은 얼마나 말이 속잎나고, 있을 동산에는 충분히 끓는다.",
       open: false,
     },
-    {
-      question: "배송일정은 어떻게 되나요?",
-      answer:
-        "청춘의 낙원을 앞이 대한 그들은 길을 아름다우냐? 작고 오아이스도 그들의 있을 그들의 트고, 사막이다. 있는 같으며, 따뜻한 그리하였는가? 얼마나 들어 황금시대를 것은 우리의 별과 보라. 가슴에 대고, 얼음이 가치를 군영과 얼마나 그리하였는가? 역사를 광야에서 같은 있으며, 품으며, 얼마나 이성은 얼마나 말이 속잎나고, 있을 동산에는 충분히 끓는다.",
-      open: false,
-    },
   ]);
 
   const toggleFAQ = (index) => {
@@ -95,23 +89,22 @@ const H6 = styled.h6`
 `;
 
 const Q = styled.h6`
-  width: 20px;
-  font-weight: bold;
-  font-size: 28px;
-  color: #b1b1b1;
-  margin: 0 10px 0 0;
-  float: left;
-  line-height: 15px;
-`;
+    width : 20px;
+    font-weight :bold;
+    font-size : 28px;
+    color : #B1B1B1;
+    margin: 0 10px 0 0;
+    float : left;
+    line-height : 15px;
+`
 
 const A = styled.h6`
-  width: 20px;
-  height: 140px;
-  font-weight: bold;
-  font-size: 28px;
-  color: #b1b1b1;
-  margin: 0px;
-  float: left;
-`;
-
+    width : 20px;
+    height : 140px;
+    font-weight :bold;
+    font-size : 28px;
+    color : #B1B1B1;
+    margin :0 10px 0 0;
+    float : left;
+`
 export default QnA;

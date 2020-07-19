@@ -30,6 +30,7 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
     "saslprep": "^1.0.3",
+    "server": "^1.0.29",
     "styled-components": "^5.1.1",
     "supports-color": "^7.1.0"
   },

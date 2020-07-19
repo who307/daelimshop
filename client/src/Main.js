@@ -1,9 +1,6 @@
 import React, { Component, useState } from "react";
 import styled, { css } from "styled-components";
 import { withRouter } from 'react-router-dom';
-
-import { continents, price } from './Datas';
-import CheckBox from "./CheckBox"
 import LandingPage from "./LandingPage";
 
 
@@ -97,50 +94,49 @@ class Main extends React.Component {
         );
       }
     });
-    // const products = this.props.product.map((pro) => {
-    //   if(tabState === "전체") {
-    //     return (
-    //       <ProductInfo key={pro.key}>
-    //         <a href="">
-    //           <ProductImgDiv>
-    //             <img src={pro.img} alt="d" />
-    //           </ProductImgDiv>
-    //           <ProductAccount>
-    //             <ProductTitle>{pro.name}</ProductTitle>
-    //             <Price>{pro.price}</Price>
-    //           </ProductAccount>
-    //         </a>
-    //       </ProductInfo>
-    //     );
-    //   } else if(tabState === pro.tab) {
-    //     return (
-    //       <ProductInfo key={pro.key}>
-    //         <a href="">
-    //           <ProductImgDiv>
-    //             <img src={pro.img} alt="d" />
-    //           </ProductImgDiv>
-    //           <ProductAccount>
-    //             <ProductTitle>{pro.name}</ProductTitle>
-    //             <Price>{pro.price}</Price>
-    //           </ProductAccount>
-    //         </a>
-    //       </ProductInfo>
-    //     );
-    //   }
-    // });
+    const products = this.props.product.map((pro) => {
+      if(tabState === "전체") {
+        return (
+          <ProductInfo key={pro.key}>
+            <a href="">
+              <ProductImgDiv>
+                <img src={pro.img} alt="d" />
+              </ProductImgDiv>
+              <ProductAccount>
+                <ProductTitle>{pro.name}</ProductTitle>
+                <Price>{pro.price}</Price>
+              </ProductAccount>
+            </a>
+          </ProductInfo>
+        );
+      } else if(tabState === pro.tab) {
+        return (
+          <ProductInfo key={pro.key}>
+            <a href="">
+              <ProductImgDiv>
+                <img src={pro.img} alt="d" />
+              </ProductImgDiv>
+              <ProductAccount>
+                <ProductTitle>{pro.name}</ProductTitle>
+                <Price>{pro.price}</Price>
+              </ProductAccount>
+            </a>
+          </ProductInfo>
+        );
+      }
+    });
     return (
       <Container>
         <div>
           <CategoryTitle>카테고리별 상품</CategoryTitle>
-          {/* <Radiobox list={price} handleFilters={filters => handleFilters(filters, "price")} /> */}
           <CategoryTab>
             <CategoryList>{CategoryL}</CategoryList>
           </CategoryTab>
           <ProductDiv>
             <Title>{this.state.tabState}</Title>
-            {/* <ProductList>{products}</ProductList> */} 
+            <ProductList>{products}</ProductList> 
           </ProductDiv>
-          <LandingPage></LandingPage>
+          
 
         </div>
       </Container>

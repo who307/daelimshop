@@ -8,12 +8,12 @@ function Notices() {
     const [faqs, setfaqs] = useState([
 
         {
-            question: '대중장 오픈?',
+            question: '대중장 오픈',
             answer: '청춘의 낙원을 앞이 대한 그들은 길을 아름다우냐? 작고 오아이스도 그들의 있을 그들의 트고, 사막이다. 있는 같으며, 따뜻한 그리하였는가? 얼마나 들어 황금시대를 것은 우리의 별과 보라. 가슴에 대고, 얼음이 가치를 군영과 얼마나 그리하였는가? 역사를 광야에서 같은 있으며, 품으며, 얼마나 이성은 얼마나 말이 속잎나고, 있을 동산에는 충분히 끓는다.',
             open: false
         },
         {
-            question: '대중장 운영',
+            question: '대중장 운영방식',
             answer: '금시대를 것은 우리의 별과 보라. 가슴에 대고, 얼음이 가치를 군영과 얼마나 그리하였는가? 역사를 광야에서 같은 있으며, 품으며, 얼마나 이성은 얼마나 말이 속잎나고, 있을 동산에는 충분히 끓는다.',
             open: false
         }
@@ -102,7 +102,7 @@ const A = styled.h6`
     font-weight :bold;
     font-size : 28px;
     color : #B1B1B1;
-    margin : 0px;
+    margin :0 10px 0 0;
     float : left;
 `
 
