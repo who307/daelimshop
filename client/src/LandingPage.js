@@ -5,8 +5,6 @@ import { Icon, Col, Card, Row, Carousel } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from './ImageSlider';
 import Checkbox from './CheckBox';
-import Radiobox from './RadioBox';
-import SearchFeature from './SearchFeature';
 import { continents, price } from './Datas';
 import styled from 'styled-components';
 

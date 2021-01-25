@@ -18,7 +18,6 @@ import Pwdfind2 from "./Pwdfind2"
 import UploadProductPage from "./UploadProductPage"
 import DetailProductPage from "./DetailProductPage/DetailProductPage"
 
-import LandingPage from "./LandingPage";
 
 
 
@@ -105,7 +104,7 @@ class App extends Component {
     super(props);
     this.state = {
       menuContent: [
-        { id: 1, list: "판매", link: "" },
+        { id: 1, list: "판매", link: "/UploadProductPage" },
         { id: 2, list: "쪽지", link: "" },
         
       ],
@@ -133,16 +132,16 @@ class App extends Component {
 
 
       product: [
-        { key: 0, name: "디지털 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "디지털" },
-        { key: 1, name: "의류 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "의류" },
-        { key: 2, name: "가구 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "가구/인테리어" },
-        { key: 3, name: "뷰티 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "뷰티" },
-        { key: 4, name: "도서 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "도서" },
-        { key: 5, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
-        { key: 6, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
-        { key: 7, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
-        { key: 8, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
-        { key: 9, name: "기타 상품", price: "10000", img: "/image/bird-932704_640.jpg", src: "", tab: "기타" },
+        { key: 0, name: "디지털 상품", price: "10000", img: "https://barnimages.com/wp-content/uploads/2018/04/2016-08-09-roman-drits-barnimages-002-770x513.jpg", src: "", tab: "디지털" },
+        { key: 1, name: "의류 상품", price: "10000", img: "https://images.pexels.com/photos/4464822/pexels-photo-4464822.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "의류" },
+        { key: 2, name: "가구 상품", price: "10000", img: "https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "가구/인테리어" },
+        { key: 3, name: "뷰티 상품", price: "10000", img: "https://images.pexels.com/photos/3741109/pexels-photo-3741109.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "뷰티" },
+        { key: 4, name: "도서 상품", price: "10000", img: "https://images.pexels.com/photos/460395/pexels-photo-460395.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "도서" },
+        { key: 5, name: "기타 상품", price: "10000", img: "https://images.pexels.com/photos/3661227/pexels-photo-3661227.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "기타" },
+        { key: 6, name: "기타 상품", price: "10000", img: "https://images.pexels.com/photos/3661227/pexels-photo-3661227.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "기타" },
+        { key: 7, name: "기타 상품", price: "10000", img: "https://images.pexels.com/photos/3661227/pexels-photo-3661227.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "기타" },
+        { key: 8, name: "기타 상품", price: "10000", img: "https://images.pexels.com/photos/3661227/pexels-photo-3661227.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "기타" },
+        { key: 9, name: "기타 상품", price: "10000", img: "https://images.pexels.com/photos/3661227/pexels-photo-3661227.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", src: "", tab: "기타" },
       ],
 
       LoginOpen: false,
@@ -268,21 +267,21 @@ class App extends Component {
             
           } />
           
-          
-
         <Contents>
-          {/* {<Route
-            exact path='/'
+          {<Route
+            exact path='/shopFront'
             render={() =>
               <Main category={this.state.category} product={this.state.product} />
               
-            } /> } */}
-          <Route exact path="" component={LandingPage} />
+            } /> }
+          {/* <Route exact path="" component={LandingPage} /> */}
+          {/* <Route path="/product/:productId" component={DetailProductPage} /> */}
+          <Route path="/product/:productId" component={Detail} />
           <Route path="/UploadProductPage" component={UploadProductPage} />
-          <Route path="/product/:productId" component={DetailProductPage} />
           <Route path="/Qna" component={QnA} />
           <Route path="/Notices" component={Notices} />
           <Route path="/Menu" component={Menu} />
+          <Route path="/Detail" component={Detail} />
 
         </Contents>
         <Route path="/signpage1" component={SignPage1} />
@@ -291,14 +290,6 @@ class App extends Component {
         <footer>
           <Route path="/" component={Footer} />
         </footer>
- 
-
-
-
-
-
-        {/* <Route path="/product/:productId" component={Detail} /> */}
-
 
 
         {this.state.LoginOpen === true && (

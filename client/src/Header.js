@@ -278,7 +278,7 @@ class Header extends Component {
 
     const menuList = this.props.menuContent.map((menu) => {
       console.log(this.props.login)
-      if(sessionStorage.getItem('logintoken') && menu.id == 1) {
+      if(menu.id == 1) {
         return <MenuContent key={menu.id}><Link to="/UploadProductPage">{menu.list}</Link></MenuContent>;
       } else {
         return <MenuContent onClick={this.props.loginOpen} key={menu.id}>{menu.list}</MenuContent>;
@@ -333,9 +333,9 @@ class Header extends Component {
         <MainNav>
           <NavDiv>
             <div>
-              <Link to="/">
+              <Link to="/shopFront">
                 <Logo>D</Logo>
-                <Title>대중장</Title>   
+                <Title>중고장터</Title>   
               
               </Link>
               {menuList}

@@ -1,31 +1,35 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import ProductImage from './DetailProductPage/Sections/ProductImage';
-import ProductInfo from './DetailProductPage/Sections/ProductInfo';
 
+class Detail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productDetail: {
+        title: "자바 전공서적 판매",
+        price: "9,000",
+        productState: "중고(상품상태)",
+        trade: "교환불가",
+        delivery: "택배 착불",
+        area: "서울",
+        img: "https://images.pexels.com/photos/708774/pexels-photo-708774.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        info: " 제품을 설명하는 공간입니다. "
+    },sellerinfo : {
+        id : "who307",
+        name : "문건후",
+        phoneNum : "01040544118",
+        address : "안산"
+      }
+    }
 
-function Detail(props)  {
-  
-  const productId = props.match.params.productId
-
-    const [Product, setProduct] = useState({})
-
-    useEffect(() => {
-        axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
-            .then(response => {
-                setProduct(response.data[0])
-            })
-            .catch(err => alert(err))
-    }, [])
-
+}
+  render() {
     return (
       <Container>
         <TopDiv>
           <ImgDiv>
-          <ProductImage detail={Product} />
+            <img src={this.state.productDetail.img} alt="product1" />
           </ImgDiv>
-          <ProductInfo detail={Product} />
           <TextDiv>
             <Title>{this.state.productDetail.title}</Title>
             <Price>{this.state.productDetail.price}<div>원</div></Price>
@@ -73,12 +77,12 @@ function Detail(props)  {
               <StateContent>{this.state.sellerinfo.name}</StateContent>
               </Sellerstate>
               <Sellerstate>
-              <SellerContent>학과 : </SellerContent>  
-              <StateContent>{this.state.sellerinfo.department}</StateContent>
+              <SellerContent>전화번호 : </SellerContent>  
+              <StateContent>{this.state.sellerinfo.phoneNum}</StateContent>
               </Sellerstate>  
               <Sellerstate>
-              <SellerContent>학번 : </SellerContent>
-              <StateContent>{this.state.sellerinfo.schoolnum}</StateContent>
+              <SellerContent>주소 : </SellerContent>
+              <StateContent>{this.state.sellerinfo.address}</StateContent>
               </Sellerstate> 
 
           </MyInfo>
@@ -97,7 +101,7 @@ function Detail(props)  {
       </Container>
     )
   }
-
+}
 
 const Container = styled.div`
   margin: 0 auto;

@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import styled, { css } from "styled-components";
+import { Link} from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import LandingPage from "./LandingPage";
 
@@ -25,12 +26,6 @@ class Main extends React.Component {
 
     
   }
-
-  changeTab0() {
-    this.setState({ tabState: "전체", });
-  }
-  
-
   changeTab0() {
     this.setState({ tabState: "전체", });
   }
@@ -82,7 +77,7 @@ class Main extends React.Component {
       if (tabState === ctry.list) {
         return (
           <Category onClick={allTab[ctry.id]} black key={ctry.id}>
-            {ctry.list}
+          {ctry.list}
           </Category>
           
         );
@@ -98,7 +93,7 @@ class Main extends React.Component {
       if(tabState === "전체") {
         return (
           <ProductInfo key={pro.key}>
-            <a href="">
+            <a href="/detail">
               <ProductImgDiv>
                 <img src={pro.img} alt="d" />
               </ProductImgDiv>
@@ -136,8 +131,6 @@ class Main extends React.Component {
             <Title>{this.state.tabState}</Title>
             <ProductList>{products}</ProductList> 
           </ProductDiv>
-          
-
         </div>
       </Container>
     );
