@@ -6,20 +6,20 @@ const Footer = () => {
   return (
     <Container>
       <Logo>D</Logo>
-      <H3>중고장터</H3>
+      <H3>대중장</H3>
       <FooterLink>
         <Footerlist1>이용약관</Footerlist1>
         <Footerlist2>사이트맵</Footerlist2>
         <Footerlist3>개인정보처리방침</Footerlist3>
       </FooterLink>
       <Company>
-        경기도 안양시 동안구 임곡로 29  (우편번호:12345
+        경기도 안양시 동안구 임곡로 29  대림대학교 전산관 5층 (우편번호:13916
         ) ㅣ TEL. 010)4054-4118 ㅣ FAX. 02)1234-5678 who307@naver.com ㅣ
-        정보관리책임 : 문건후ㅣ 사업자등록번호 : 000-00-000000 ㅣ 업체명
-        :중고장터 대표이사 문건후
+        정보관리책임 : 김류문ㅣ 사업자등록번호 : 000-00-000000 ㅣ 업체명
+        :대중장 대표이사 김류문
       </Company>
       <Copyright>
-        Copyright ⓒ 2020.MoonGunWho. All right reserved
+        Copyright ⓒ 2020.KimRyuMoon. All right reserved
         </Copyright>
       <Question>
         고객센터 02-852-9632 ㅣ 제휴문의 who307@naver.com
